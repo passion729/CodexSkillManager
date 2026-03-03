@@ -4,7 +4,7 @@
 CodexSkillManager is a small macOS SwiftUI app built with SwiftPM (no Xcode project) that lists the Codex skills installed in the user's public skills folder.
 
 ## How it works
-- The app scans `~/.codex/skills` and `~/.codex/skills/public` for subdirectories.
+- The app scans `~/.codex/skills`, `~/.codex/skills/public`, and `~/.agents/skills` for subdirectories.
 - Each directory name becomes a skill entry.
 - The UI is a SwiftUI `NavigationSplitView` with a list on the left and a detail view on the right.
 - The detail view shows the skill name and its full path.
