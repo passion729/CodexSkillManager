@@ -2,69 +2,29 @@ import SwiftUI
 
 struct SkillListView: View {
     @Environment(SkillStore.self) private var store
-    @Environment(RemoteSkillStore.self) private var remoteStore
 
     let localSkills: [Skill]
-    let remoteLatestSkills: [RemoteSkill]
-    let remoteSearchResults: [RemoteSkill]
-    let remoteSearchState: RemoteSkillStore.LoadState
-    let remoteLatestState: RemoteSkillStore.LoadState
-    let remoteQuery: String
-    let installedPlatforms: [String: Set<SkillPlatform>]
-    let onInstallRemoteSkill: (RemoteSkill) -> Void
 
-    @Binding var source: SkillSource
     @Binding var localSelection: Skill.ID?
-    @Binding var remoteSelection: RemoteSkill.ID?
 
     private var groupedLocalSkills: [SkillStore.LocalSkillGroup] {
         store.groupedLocalSkills(from: localSkills)
     }
 
     var body: some View {
-        List(selection: source == .local ? $localSelection : $remoteSelection) {
-            if source == .local {
-                SidebarHeaderView(
-                    skillCount: groupedLocalSkills.count,
-                    source: $source
-                )
+        List(selection: $localSelection) {
+            SidebarHeaderView(skillCount: groupedLocalSkills.count)
                 .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0))
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
 
-                localSectionContent()
-            } else {
-                SidebarHeaderView(
-                    skillCount: remoteLatestSkills.count,
-                    source: $source
-                )
-                .listRowInsets(EdgeInsets(top: 4, leading: 0, bottom: 8, trailing: 0))
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-
-                if shouldShowSearchSection {
-                    Section("Search Results") {
-                        searchSectionContent
-                    }
-                }
-
-                Section("Latest Drops") {
-                    latestSectionContent
-                }
-            }
+            localSectionContent()
         }
         .listStyle(.sidebar)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    Task {
-                        switch source {
-                        case .local:
-                            await store.loadSkills()
-                        case .clawdhub:
-                            await remoteStore.loadLatest()
-                        }
-                    }
+                    Task { await store.loadSkills() }
                 } label: {
                     Label("Reload", systemImage: "arrow.clockwise")
                 }
@@ -73,86 +33,20 @@ struct SkillListView: View {
         }
     }
 
-    private var shouldShowSearchSection: Bool {
-        !remoteQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
-
-    @ViewBuilder
-    private var searchSectionContent: some View {
-        if remoteSearchState == .loading {
-            HStack {
-                ProgressView()
-                Text("Searching…")
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.vertical, 8)
-        } else if case let .failed(message) = remoteSearchState {
-            Text("Search failed: \(message)")
-                .foregroundStyle(.secondary)
-                .padding(.vertical, 8)
-        } else if remoteSearchResults.isEmpty {
-            Text("No results yet.")
-                .foregroundStyle(.secondary)
-                .padding(.vertical, 8)
-        } else {
-            ForEach(remoteSearchResults) { skill in
-                RemoteSkillRowView(
-                    skill: skill,
-                    installedTargets: installedPlatforms[skill.slug, default: []],
-                    onInstall: { onInstallRemoteSkill(skill) }
-                )
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var latestSectionContent: some View {
-        if remoteLatestState == .loading {
-            HStack {
-                ProgressView()
-                Text("Loading latest…")
-                    .foregroundStyle(.secondary)
-            }
-            .padding(.vertical, 8)
-        } else if case let .failed(message) = remoteLatestState {
-            Text("Latest drops unavailable: \(message)")
-                .foregroundStyle(.secondary)
-                .padding(.vertical, 8)
-        } else if remoteLatestSkills.isEmpty {
-            Text("No skills yet.")
-                .foregroundStyle(.secondary)
-                .padding(.vertical, 8)
-        } else {
-            ForEach(remoteLatestSkills) { skill in
-                RemoteSkillRowView(
-                    skill: skill,
-                    installedTargets: installedPlatforms[skill.slug, default: []],
-                    onInstall: { onInstallRemoteSkill(skill) }
-                )
-            }
-        }
-    }
-
     @ViewBuilder
     private func localSectionContent() -> some View {
-        // Group user directory skills separately to avoid custom-path slugs hiding them.
         let platformSkills = store.groupedPlatformSkills(from: localSkills)
-        let mine = platformSkills.filter { store.isOwnedSkill($0.skill) }
-        let clawdhub = platformSkills.filter { !store.isOwnedSkill($0.skill) }
-
-        let hasAnySkills = !mine.isEmpty || !clawdhub.isEmpty || !store.customPaths.isEmpty
+        let hasAnySkills = !platformSkills.isEmpty || !store.customPaths.isEmpty
 
         if !hasAnySkills {
             Text("No skills yet.")
                 .foregroundStyle(.secondary)
                 .padding(.vertical, 8)
         } else {
-            // Platform skill sections
-            Section("Mine") {
-                localRows(for: mine)
-            }
-            Section("Clawdhub") {
-                localRows(for: clawdhub)
+            if !platformSkills.isEmpty {
+                Section("Skills") {
+                    localRows(for: platformSkills)
+                }
             }
 
             // Custom path sections

@@ -11,7 +11,6 @@ struct CodexSkillManagerApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var customPathStore: CustomPathStore
     @State private var store: SkillStore
-    @State private var remoteStore = RemoteSkillStore(client: .live())
 
     init() {
         let pathStore = CustomPathStore()
@@ -23,7 +22,6 @@ struct CodexSkillManagerApp: App {
         WindowGroup("Codex Skill Manager") {
             SkillSplitView()
                 .environment(store)
-                .environment(remoteStore)
                 .environment(customPathStore)
         }
         .commands {
