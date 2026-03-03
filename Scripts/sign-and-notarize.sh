@@ -7,9 +7,10 @@ APP_BUNDLE="${APP_NAME}.app"
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 source "$ROOT/version.env"
 ZIP_NAME="${APP_NAME}-${MARKETING_VERSION}.zip"
-SPARKLE_FEED_URL=${SPARKLE_FEED_URL:-"https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml"}
+SPARKLE_FEED_URL=${SPARKLE_FEED_URL:-"https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml"}
+SPARKLE_PUBLIC_KEY=${SPARKLE_PUBLIC_KEY:-BdU8AoJUMM5C8axhCoe8/yYOonGa7mRRVAQ1l58Iws8=}
 
-if [[ -z "${SPARKLE_PUBLIC_KEY:-}" ]]; then
+if [[ -z "${SPARKLE_PUBLIC_KEY}" ]]; then
   echo "Missing SPARKLE_PUBLIC_KEY env var. Sparkle will not be enabled without it." >&2
   exit 1
 fi

@@ -2,12 +2,12 @@
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>Codex Skill Manager</title>
-        <link>https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml</link>
+        <link>https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml</link>
         <description>Codex Skill Manager updates</description>
         <item>
             <title>1.3.3</title>
             <pubDate>Sun, 18 Jan 2026 16:20:34 +0100</pubDate>
-            <link>https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml</link>
+            <link>https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml</link>
             <sparkle:version>12</sparkle:version>
             <sparkle:shortVersionString>1.3.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
@@ -23,12 +23,12 @@
 </ul>
 </body>
 </html>]]></description>
-            <enclosure url="https://github.com/Dimillian/CodexSkillManager/releases/download/v1.3.3/CodexSkillManager-1.3.3.zip" length="3642191" type="application/octet-stream" sparkle:edSignature="bNdi8gq5n4XWEhdBgJQlfql5jqSYCyfsYdHjbh7WYBLPkYR3uu4MAyJvRecOsvM2kKl5eLFM8pcmEwML7GN1Ag=="/>
+            <enclosure url="https://github.com/passion729/CodexSkillManager/releases/download/v1.3.3/CodexSkillManager-1.3.3.zip" length="3642191" type="application/octet-stream" sparkle:edSignature="bNdi8gq5n4XWEhdBgJQlfql5jqSYCyfsYdHjbh7WYBLPkYR3uu4MAyJvRecOsvM2kKl5eLFM8pcmEwML7GN1Ag=="/>
         </item>
         <item>
             <title>1.3.2</title>
             <pubDate>Sun, 18 Jan 2026 09:33:22 +0100</pubDate>
-            <link>https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml</link>
+            <link>https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml</link>
             <sparkle:version>11</sparkle:version>
             <sparkle:shortVersionString>1.3.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
@@ -47,12 +47,12 @@
 </ul>
 </body>
 </html>]]></description>
-            <enclosure url="https://github.com/Dimillian/CodexSkillManager/releases/download/v1.3.2/CodexSkillManager-1.3.2.zip" length="3642210" type="application/octet-stream" sparkle:edSignature="twAp2YTxCjVHBNzme9YPWDJFAVSVaw5d7m/7AhGpLckm0MGlu3PV6ovpw+df74TcpQYIMrSoJ06UvHU4bDx3Ag=="/>
+            <enclosure url="https://github.com/passion729/CodexSkillManager/releases/download/v1.3.2/CodexSkillManager-1.3.2.zip" length="3642210" type="application/octet-stream" sparkle:edSignature="twAp2YTxCjVHBNzme9YPWDJFAVSVaw5d7m/7AhGpLckm0MGlu3PV6ovpw+df74TcpQYIMrSoJ06UvHU4bDx3Ag=="/>
         </item>
         <item>
             <title>1.3.0</title>
             <pubDate>Fri, 09 Jan 2026 17:09:18 +0100</pubDate>
-            <link>https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml</link>
+            <link>https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml</link>
             <sparkle:version>9</sparkle:version>
             <sparkle:shortVersionString>1.3.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
@@ -73,12 +73,12 @@
 </ul>
 </body>
 </html>]]></description>
-            <enclosure url="https://github.com/Dimillian/CodexSkillManager/releases/download/v1.3.0/CodexSkillManager-1.3.0.zip" length="3611803" type="application/octet-stream" sparkle:edSignature="5SNlyi3k7J6o/vwcCQYYj7nqsIInoDxfUqwsnWH2IwDI2Madrj9IU4JEP5Xd6FnFxfeglaUdGjrW5XmU8PPpAA=="/>
+            <enclosure url="https://github.com/passion729/CodexSkillManager/releases/download/v1.3.0/CodexSkillManager-1.3.0.zip" length="3611803" type="application/octet-stream" sparkle:edSignature="5SNlyi3k7J6o/vwcCQYYj7nqsIInoDxfUqwsnWH2IwDI2Madrj9IU4JEP5Xd6FnFxfeglaUdGjrW5XmU8PPpAA=="/>
         </item>
         <item>
             <title>1.2.3</title>
             <pubDate>Thu, 08 Jan 2026 18:17:41 +0100</pubDate>
-            <link>https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml</link>
+            <link>https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml</link>
             <sparkle:version>8</sparkle:version>
             <sparkle:shortVersionString>1.2.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
@@ -96,7 +96,7 @@
 </ul>
 </body>
 </html>]]></description>
-            <enclosure url="https://github.com/Dimillian/CodexSkillManager/releases/download/v1.2.3/CodexSkillManager-1.2.3.zip" length="3615455" type="application/octet-stream" sparkle:edSignature="qQacEWD/FkZQ/kZ++GNUkfMprCv2oVTd1+0yWHqlVjhG/JoNezTQkz4XKxdlSdfSH+/zAUh1Z7rfHxHUAx0+DQ=="/>
+            <enclosure url="https://github.com/passion729/CodexSkillManager/releases/download/v1.2.3/CodexSkillManager-1.2.3.zip" length="3615455" type="application/octet-stream" sparkle:edSignature="qQacEWD/FkZQ/kZ++GNUkfMprCv2oVTd1+0yWHqlVjhG/JoNezTQkz4XKxdlSdfSH+/zAUh1Z7rfHxHUAx0+DQ=="/>
         </item>
     </channel>
 </rss>

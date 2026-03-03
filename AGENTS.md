@@ -41,7 +41,7 @@ Sparkle env vars (set in `~/.zshrc`):
    - `./Scripts/sign-and-notarize.sh`
    - Note: `SPARKLE_PUBLIC_KEY` must be set (and `SPARKLE_FEED_URL` if non-default) or the build will be missing Sparkle keys and updates will not work.
 6) Generate Sparkle appcast entry:
-   - `SPARKLE_PRIVATE_KEY_FILE="..." ./Scripts/make_appcast.sh CodexSkillManager-<version>.zip https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml`
+   - `SPARKLE_PRIVATE_KEY_FILE="..." ./Scripts/make_appcast.sh CodexSkillManager-<version>.zip https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml`
    - Note: Sparkle uses the build number (`BUILD_NUMBER`) for `sparkle:version`, so it must increase each release.
    - `git add appcast.xml`
    - `git commit -m "chore: update sparkle appcast"`

@@ -33,13 +33,12 @@ struct AboutView: View {
             Divider()
 
             HStack(spacing: 12) {
-                Link("GitHub", destination: URL(string: "https://github.com/Dimillian/CodexSkillManager")!)
-                Link("Releases", destination: URL(string: "https://github.com/Dimillian/CodexSkillManager/releases")!)
-                Link("Twitter", destination: URL(string: "https://twitter.com/dimillian")!)
+                Link("GitHub", destination: URL(string: "https://github.com/passion729/CodexSkillManager")!)
+                Link("Releases", destination: URL(string: "https://github.com/passion729/CodexSkillManager/releases")!)
             }
             .font(.system(size: 12, weight: .semibold))
 
-            Text("Made by @Dimillian, Codex, and the Community ❤️")
+            Text("Forked from @Dimillian's CodexSkillManager ❤️")
                 .font(.system(size: 12, weight: .medium))
                 .foregroundStyle(.secondary)
         }

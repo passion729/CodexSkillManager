@@ -2,3 +2,6 @@
 /.swiftpm
 /CodexSkillManager.app
 *.zip
+.DS_Store
+.zed
+.vscode

@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 ZIP=${1:?
 "Usage: $0 MyApp-<ver>.zip"}
-FEED_URL=${2:-"https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml"}
+FEED_URL=${2:-"https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml"}
 PRIVATE_KEY_FILE=${SPARKLE_PRIVATE_KEY_FILE:-}
 if [[ -z "$PRIVATE_KEY_FILE" ]]; then
   echo "Set SPARKLE_PRIVATE_KEY_FILE to your ed25519 private key (Sparkle)." >&2
@@ -125,7 +125,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-DOWNLOAD_URL_PREFIX=${SPARKLE_DOWNLOAD_URL_PREFIX:-"https://github.com/Dimillian/CodexSkillManager/releases/download/v${VERSION}/"}
+DOWNLOAD_URL_PREFIX=${SPARKLE_DOWNLOAD_URL_PREFIX:-"https://github.com/passion729/CodexSkillManager/releases/download/v${VERSION}/"}
 
 GEN_APPCAST=$(command -v generate_appcast || true)
 SIGN_UPDATE=$(command -v sign_update || true)

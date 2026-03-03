@@ -12,7 +12,7 @@ MENU_BAR_APP=${MENU_BAR_APP:-0}
 SIGNING_MODE=${SIGNING_MODE:-}
 APP_IDENTITY=${APP_IDENTITY:-}
 SPARKLE_FEED_URL=${SPARKLE_FEED_URL:-}
-SPARKLE_PUBLIC_KEY=${SPARKLE_PUBLIC_KEY:-}
+SPARKLE_PUBLIC_KEY=${SPARKLE_PUBLIC_KEY:-BdU8AoJUMM5C8axhCoe8/yYOonGa7mRRVAQ1l58Iws8=}
 
 if [[ -f "$ROOT/version.env" ]]; then
   source "$ROOT/version.env"
@@ -53,7 +53,7 @@ GIT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 SPARKLE_PLIST_KEYS=""
 if [[ -n "$SPARKLE_PUBLIC_KEY" ]]; then
   if [[ -z "$SPARKLE_FEED_URL" ]]; then
-    SPARKLE_FEED_URL="https://raw.githubusercontent.com/Dimillian/CodexSkillManager/main/appcast.xml"
+    SPARKLE_FEED_URL="https://raw.githubusercontent.com/passion729/CodexSkillManager/main/appcast.xml"
   fi
   SPARKLE_PLIST_KEYS="    <key>SUFeedURL</key><string>${SPARKLE_FEED_URL}</string>
     <key>SUPublicEDKey</key><string>${SPARKLE_PUBLIC_KEY}</string>"
