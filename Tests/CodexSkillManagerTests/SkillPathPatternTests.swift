@@ -25,7 +25,7 @@ enum TestSkillPlatform: String, CaseIterable {
 
     var relativePaths: [String] {
         switch self {
-        case .codex: return [".codex/skills", ".codex/skills/public"]
+        case .codex: return [".codex/skills", ".codex/skills/public", ".agents/skills"]
         case .claude: return [".claude/skills"]
         case .opencode: return [".config/opencode/skill"]
         case .copilot: return [".copilot/skills"]
@@ -88,7 +88,7 @@ struct SkillPlatformPathTests {
     @Test("Platform relative paths are correct")
     func platformRelativePaths() {
         #expect(TestSkillPlatform.codex.relativePath == ".codex/skills")
-        #expect(TestSkillPlatform.codex.relativePaths == [".codex/skills", ".codex/skills/public"])
+        #expect(TestSkillPlatform.codex.relativePaths == [".codex/skills", ".codex/skills/public", ".agents/skills"])
         #expect(TestSkillPlatform.claude.relativePath == ".claude/skills")
         #expect(TestSkillPlatform.opencode.relativePath == ".config/opencode/skill")
         #expect(TestSkillPlatform.copilot.relativePath == ".copilot/skills")
@@ -133,7 +133,8 @@ struct SkillPlatformPathTests {
             TestSkillPlatform.codex.skillsURLs(in: customBase).map(\.path) ==
             [
                 "/Users/test/projects/my-project/.codex/skills",
-                "/Users/test/projects/my-project/.codex/skills/public"
+                "/Users/test/projects/my-project/.codex/skills/public",
+                "/Users/test/projects/my-project/.agents/skills"
             ]
         )
         #expect(

@@ -39,7 +39,7 @@ enum SkillPlatform: String, CaseIterable, Identifiable, Hashable, Sendable, Coda
     var relativePaths: [String] {
         switch self {
         case .codex:
-            return [".codex/skills", ".codex/skills/public"]
+            return [".codex/skills", ".codex/skills/public", ".agents/skills"]
         case .claude:
             return [".claude/skills"]
         case .opencode:
