@@ -22,6 +22,10 @@ actor SkillFileWorker {
         try String(contentsOf: url, encoding: .utf8)
     }
 
+    func saveMarkdown(at url: URL, content: String) throws {
+        try content.write(to: url, atomically: true, encoding: .utf8)
+    }
+
     func scanSkills(at baseURL: URL, storageKey: String) throws -> [ScannedSkillData] {
         let fileManager = FileManager.default
 

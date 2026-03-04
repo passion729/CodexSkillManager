@@ -113,7 +113,10 @@ struct SkillSplitView: View {
     private var localSelectionBinding: Binding<Skill.ID?> {
         Binding(
             get: { store.selectedSkillID },
-            set: { store.selectedSkillID = $0 }
+            set: { newID in
+                guard !store.isEditing else { return }
+                store.selectedSkillID = newID
+            }
         )
     }
 

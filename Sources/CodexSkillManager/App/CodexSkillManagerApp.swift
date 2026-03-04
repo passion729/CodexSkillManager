@@ -11,6 +11,7 @@ struct CodexSkillManagerApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var customPathStore: CustomPathStore
     @State private var store: SkillStore
+    @State private var appSettings = AppSettings()
 
     init() {
         let pathStore = CustomPathStore()
@@ -23,6 +24,7 @@ struct CodexSkillManagerApp: App {
             SkillSplitView()
                 .environment(store)
                 .environment(customPathStore)
+                .environment(appSettings)
         }
         .commands {
             CommandGroup(replacing: .appInfo) {
@@ -41,6 +43,11 @@ struct CodexSkillManagerApp: App {
             AboutView()
         }
         .windowResizability(.contentSize)
+
+        Settings {
+            AppSettingsView()
+                .environment(appSettings)
+        }
     }
 }
 

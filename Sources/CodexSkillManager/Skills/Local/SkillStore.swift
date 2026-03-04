@@ -1,3 +1,4 @@
+import CodeEditorView
 import Foundation
 import Observation
 
@@ -33,6 +34,10 @@ import Observation
     var selectedMarkdown: String = ""
     var selectedReferenceID: SkillReference.ID?
     var selectedReferenceMarkdown: String = ""
+    var isEditing: Bool = false
+    var editDraft: String = ""
+    var editPosition: CodeEditor.Position = CodeEditor.Position()
+    var selectedRawMarkdown: String = ""
 
     private let fileWorker = SkillFileWorker()
     private let importWorker = SkillImportWorker()
@@ -141,9 +146,13 @@ import Observation
     }
 
     func loadSelectedSkill() async {
+        guard !isEditing else { return }
         guard let selectedSkill else {
             detailState = .idle
             selectedMarkdown = ""
+            selectedRawMarkdown = ""
+            editDraft = ""
+            isEditing = false
             referenceState = .idle
             selectedReferenceID = nil
             selectedReferenceMarkdown = ""
@@ -159,6 +168,7 @@ import Observation
 
         do {
             let raw = try await fileWorker.loadMarkdown(at: skillURL)
+            selectedRawMarkdown = raw
             selectedMarkdown = stripFrontmatter(from: raw)
             detailState = .loaded
         } catch {
@@ -188,6 +198,30 @@ import Observation
         } catch {
             referenceState = .failed(error.localizedDescription)
             selectedReferenceMarkdown = ""
+        }
+    }
+
+    func beginEditing() {
+        editDraft = selectedRawMarkdown
+        isEditing = true
+    }
+
+    func cancelEditing() {
+        isEditing = false
+        editDraft = ""
+    }
+
+    func saveSkill() async {
+        guard let selectedSkill else { return }
+        let content = editDraft
+        do {
+            try await fileWorker.saveMarkdown(at: selectedSkill.skillMarkdownURL, content: content)
+            selectedRawMarkdown = content
+            selectedMarkdown = stripFrontmatter(from: content)
+            isEditing = false
+            editDraft = ""
+        } catch {
+            // Keep isEditing = true so user can retry or cancel
         }
     }
 
